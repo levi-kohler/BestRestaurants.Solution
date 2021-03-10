@@ -21,5 +21,19 @@ namespace BestRestaurants.Controllers
       List<Restaurant> model = _db.Restaurants.Include(restaurants => restaurants.Cuisine).ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      ViewBag.CuisineId = new SelectList(_db.Cuisines, "CuisineId", "Name");
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Restaurant restaurant)
+    {
+      _db.Restaurants.Add(restaurant);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
