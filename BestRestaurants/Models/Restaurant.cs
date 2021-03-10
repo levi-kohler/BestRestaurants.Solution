@@ -1,7 +1,12 @@
-namespace ProjectName
+namespace BestRestaurants.Models
 {
-  public class ClassName
+  public class Restaurant
   {
-    // properties, constructors, methods, etc. go here
+    public int RestaurantId { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public int Rating { get; set; }
+    public int CuisineId { get; set; }
+    public virtual Cuisine Cuisine { get; set; }
   }
 }
