@@ -16,11 +16,18 @@ namespace BestRestaurants.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+    public ActionResult Create()
     {
-      List<Review> model = _db.Reviews.Include(reviews => reviews.Restaurant).ToList();
-      return View(model);
+      ViewBag.RestaurantId = new SelectList(_db.Restaurants, "RestaurantId", "Name");
+      return View();
     }
 
+    [HttpPost]
+    public ActionResult Create(Review review)
+    {
+      _db.Reviews.Add(review);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
