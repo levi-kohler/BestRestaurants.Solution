@@ -2,6 +2,7 @@
   Layout = "_Layout";
 }
 
+@using BestRestaurants.Models
 @model BestRestaurants.Models.Review
 
 <h4>Add a new task</h4>
@@ -12,9 +13,9 @@
     @Html.TextBoxFor(model => model.Name)
     @Html.LabelFor(model => model.UserReview)
     @Html.TextBoxFor(model => model.UserReview)
-    @Html.LabelFor(model => model.Rating)
-    @Html.DropDownListFor(model => model.Rating,
-    new SelectList(Enum.GetValues(typeof(Rating))),
+    @Html.LabelFor(model => model.UserRating)
+    @Html.DropDownListFor(model => model.UserRating,
+    new SelectList(Enum.GetValues(typeof(UserRating))),
     "Select Rating")
 
     @Html.LabelFor(model => model.Restaurant)
