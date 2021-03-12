@@ -38,6 +38,8 @@ namespace BestRestaurants.Controllers
 
     public ActionResult Details(int id)
     {
+      List<Review> reviewsList = _db.Reviews.Include(reviews => reviews.RestaurantId).ToList();
+      ViewBag.Reviews = reviewsList;
       Restaurant thisRestaurant = _db.Restaurants.FirstOrDefault(restaurants => restaurants.RestaurantId == id);
       return View(thisRestaurant);
     }

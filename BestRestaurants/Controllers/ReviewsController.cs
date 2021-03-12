@@ -27,7 +27,7 @@ namespace BestRestaurants.Controllers
     {
       _db.Reviews.Add(review);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", "Restaurants");
     }
   }
 }
